@@ -1,9 +1,6 @@
 "use client";
-import {
-  confirmRegistration,
-  resendVerificationOTP,
-} from "@/services/authService";
-import { checkInputOnlyNum, delayFn } from "@/utilities/checkUtils";
+import { checkInputOnlyNum } from "@/app/utilities/checkUtils";
+import { resendVerificationOTP } from "@/app/services/authService";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
