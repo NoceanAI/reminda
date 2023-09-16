@@ -17,15 +17,6 @@ export const decodeJwt = (jwt) => {
   return jwt_decode(jwt);
 };
 export const registerUser = async (data) => {
-  /***
-   * {
-    "first_name": "Olaniyi",
-    "last_name": "ajayi",
-    "user_name": "jarvis",
-    "email": "ajayiolaniyi@gmail.com",
-    "password": "Password123!"
-}
-   */
   try {
     return await axios.post(apiSignUp, {
       first_name: data.firstName,
