@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import InputComponent from "./InputComponent";
+import Logo from "./Logo";
 import PasswordComponent from "./PasswordComponent";
 import TButton from "./TButton";
 
@@ -16,6 +17,9 @@ const LoginPg = () => {
           className="absolute z-0 min-h-full "
         />
         <div className="z-10 min-h-screen w-full relative flex justify-center items-center">
+          <div className="absolute top-1 right-9">
+            <Logo />
+          </div>
           <div className="w-[456px] text-center">
             <h1 className="text-center text-white text-[40px] font-[600]">
               Welcome !
@@ -47,12 +51,22 @@ const LoginPg = () => {
             />
             <PasswordComponent label="Password" name="password" />
             <div className="text-right mb-[25px]">
-              <span className="text-[#2C44EC] text-[12px] font-[400] mr-0">
+              <span
+                onClick={() => nav.push("/forgot-password")}
+                className="text-[#2C44EC] cursor-pointer text-[12px] font-[400] mr-0"
+              >
                 Forgot password?
               </span>
             </div>
 
-            <TButton disabledFn={() => {}} clickFn={() => {}} label="Login" />
+            <TButton
+              disabledFn={() => {}}
+              clickFn={(e) => {
+                e.preventDefault();
+                nav.push("/dashboard");
+              }}
+              label="Login"
+            />
           </form>
         </div>
       </div>

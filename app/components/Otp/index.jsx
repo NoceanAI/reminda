@@ -10,9 +10,9 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import TButton from "../TButton";
 
-const Otp = () => {
+const Otp = ({ disabled = () => {} }) => {
   let router = useRouter();
-  const userData = useSelector((d) => d.appStateReducer.auth);
+  const userData = useSelector((d) => d?.appStateReducer?.auth);
   const [isLoading, setIsLoading] = useState(false);
   const [resErr, setResErr] = useState(false);
   const refOne = useRef();
@@ -56,6 +56,7 @@ const Otp = () => {
   const [errMess, setErrMess] = useState("");
 
   const moveCursorTo = (e) => {
+    disabled(disabledFn());
     const codeLen = Object.values(code).filter((i) => i);
     if (e.target.value !== "") {
       if (codeLen.length <= 6) {
@@ -80,30 +81,31 @@ const Otp = () => {
 
   const submitOtp = async () => {
     setIsLoading(true);
+
     const nCode = Object.values(code);
-    const data = {
-      user_name: userData.email,
-      code: nCode.join(""),
-    };
+    // const data = {
+    //   user_name: userData?.email,
+    //   code: nCode.join(""),
+    // };
     try {
-      const res = await confirmRegistration(data);
-      console.log(res);
-      if (res?.data?.success) {
-        toast.success(res?.data?.message);
-        delayFn(() => {
-          router.push("/verify/success");
-        }, 6000);
-      } else {
-        toast.error(res?.response?.data?.message);
-        setCode({
-          one: "",
-          two: "",
-          three: "",
-          four: "",
-          five: "",
-          six: "",
-        });
-      }
+      // const res = await confirmRegistration(data);
+      // console.log(res);
+      // if (res?.data?.success) {
+      //   toast.success(res?.data?.message);
+      //   delayFn(() => {
+      //     router.push("/verify/success");
+      //   }, 6000);
+      // } else {
+      //   toast.error(res?.response?.data?.message);
+      //   setCode({
+      //     one: "",
+      //     two: "",
+      //     three: "",
+      //     four: "",
+      //     five: "",
+      //     six: "",
+      //   });
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -152,8 +154,25 @@ const Otp = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <div id="main-verify-email" className="container">
+    <div
+      style={{
+        position: "relative",
+        width: "359px",
+        height: "301px",
+        background: "#fff",
+        borderRadius: "20px",
+        padding: "30px",
+        border: "1px solid #eee",
+      }}
+    >
+      <h1 className="text-[#101729] font-bold text-[18px] text-center">
+        Verify with OTP
+      </h1>
+      <p className="text-[#677489]] font-[500] text-[13px] text-center">
+        Please enter the OTP code sent to your email
+      </p>
+
+      <div id="main-verify-email" className="container mt-[36px]">
         {showErrFunc()}
         {showOtpFunc()}
         <div className="verify-email-box pt-3">
@@ -165,11 +184,11 @@ const Otp = () => {
                   margin: "auto",
                 }}
               >
-                <div className="flex gap-1 md:gap-4 justify-between mx-auto">
+                <div className="flex gap-1 md:gap-[3px] justify-between mx-auto">
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.one}
                     type="text"
@@ -183,7 +202,7 @@ const Otp = () => {
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.two}
                     type="text"
@@ -196,7 +215,7 @@ const Otp = () => {
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.three}
                     type="text"
@@ -209,7 +228,7 @@ const Otp = () => {
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.four}
                     type="text"
@@ -222,7 +241,7 @@ const Otp = () => {
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.five}
                     type="text"
@@ -235,7 +254,7 @@ const Otp = () => {
                   <input
                     onChange={handleChange}
                     className={
-                      "bg-[#222530] h-[48px] w-[48px] rounded-[8px] text-center"
+                      "border h-[48px] w-[48px] rounded-[8px] text-center"
                     }
                     value={code.six}
                     type="text"
@@ -250,24 +269,27 @@ const Otp = () => {
               </form>
             </div>
           </div>
-          <p className="mt-[18px] text-[14px] text-center font-[600] text-[#B5B9C8] ">
+          <p className="mt-[18px] text-[14px] text-center font-[600] text-[#B5B9C8]">
             {"Didn't recieve the OTP?"}
 
             <span
               onClick={resendOtp}
-              className="text-white ml-1 cursor-pointer"
+              className="text-[#2C44EC80] ml-1 cursor-pointer"
             >
               Resend
             </span>
           </p>
 
-          <TButton
-            disabledFn={disabledFn}
-            mt={"35px"}
-            label="Submit"
-            loading={isLoading}
-            clickFn={submitOtp}
-          />
+          <div className="text-center mt-4">
+            <TButton
+              w="202px"
+              disabledFn={disabledFn}
+              mt={"35px"}
+              label="Complete Signup"
+              loading={isLoading}
+              clickFn={submitOtp}
+            />
+          </div>
         </div>
       </div>
     </div>

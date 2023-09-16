@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import InputComponent from "../components/InputComponent";
+import Logo from "../components/Logo";
 import PasswordComponent from "../components/PasswordComponent";
 import TButton from "../components/TButton";
 
@@ -38,7 +39,14 @@ const SignUp = () => {
               </span>
             </div>
 
-            <TButton disabledFn={() => {}} clickFn={() => {}} label="Signup" />
+            <TButton
+              disabledFn={() => {}}
+              clickFn={(e) => {
+                e.preventDefault();
+                nav.push("/verify");
+              }}
+              label="Signup"
+            />
           </form>
         </div>
       </div>
@@ -48,6 +56,9 @@ const SignUp = () => {
           className="absolute z-0 min-h-full "
         />
         <div className="z-10 min-h-screen w-full relative flex justify-center items-center">
+          <div className="absolute top-1 left-9">
+            <Logo />
+          </div>
           <div className="w-[446px] text-center">
             <h1 className="text-center text-white text-[40px] font-[600]">
               Already have an account
