@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Logo from "../components/Logo";
 
 export default function RootLayout({ children }) {
   const nav = useRouter();
