@@ -6,7 +6,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={"bg-[#F9FAFC]"}>
-        <nav className="w-[150px] border-r min-h-screen fixed bg-[#2C44EC] text-white p-2">
+        <nav className="w-[150px] border-r min-h-screen fixed bg-[#1240aa] text-white p-2">
           <h1
             className="cursor-pointer text-[16px] font-bold"
             onClick={() => nav.push("/")}
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           </div>
         </nav>
         <div className="ml-[150px]">
-          <div className="h-[60px] border-b"></div>
+          <div className="h-[60px] border-b shadow-md"></div>
           {children}
         </div>
       </body>
