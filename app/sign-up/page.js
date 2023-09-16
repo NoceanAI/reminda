@@ -11,7 +11,7 @@ const SignUp = () => {
   const nav = useRouter();
   return (
     <div className="min-h-screen w-full flex bg-[#2C44EC] md:bg-[#f9fafc]">
-      <div className="w-full lg:w-[40%] flex items-center justify-center">
+      <div className="w-full lg:w-1/2 flex items-center justify-center">
         <div className="w-[80%] md:w-[456px] bg-white rounded-[20px] shadow-lg py-[55px] px-[62px]">
           <h1 className="text-[#101729] text-[28px] font-[700]">Signup</h1>
 
@@ -50,20 +50,20 @@ const SignUp = () => {
           </form>
         </div>
       </div>
-      <div className="w-full lg:w-[60%] min-h-screen hidden lg:block md:relative overflow-y-hidden">
+      <div className="w-full lg:w-1/2 min-h-screen hidden lg:block md:relative overflow-y-hidden">
         <Image
           src={require("../assets/images/rhsBg.png")}
-          className="absolute z-0 min-h-full "
+          className="absolute z-0 min-h-full right-0"
         />
         <div className="z-10 min-h-screen w-full relative flex justify-center items-center">
-          <div className="absolute top-1 left-9">
+          <div className="absolute top-1 right-9">
             <Logo />
           </div>
           <div className="w-[446px] text-center">
-            <h1 className="text-center text-white text-[40px] font-[600]">
+            <h1 className="text-center text-white text-[35px] font-[600]">
               Already have an account
             </h1>
-            <p className="mt-[5px] w-[376px]  mx-auto text-white text-[22px] font-[500] leading-[normal] text-center">
+            <p className="mt-[0px] w-[376px]  mx-auto text-white text-[20px] font-[500] leading-[normal] text-center">
               To keep connected with us log in with you personal info.
             </p>
             <button
