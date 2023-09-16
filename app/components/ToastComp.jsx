@@ -2,7 +2,7 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const TribeToast = ({ children }) => {
+const ToastComp = ({ children }) => {
   return (
     <div>
       {children}
@@ -11,4 +11,4 @@ const TribeToast = ({ children }) => {
   );
 };
 
-export default TribeToast;
+export default ToastComp;

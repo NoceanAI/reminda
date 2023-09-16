@@ -12,9 +12,9 @@ const TButton = ({
     <button
       disabled={disabledFn() || loading}
       onClick={clickFn}
-      className={`mt-[${mt}] hover:bg-[#3AB2E6] disabled:cursor-not-allowed disabled:opacity-80 text-[16px] h-[48px] w-${
+      className={`mt-[${mt}] hover:bg-[#2C44EC70] disabled:cursor-not-allowed disabled:opacity-80 text-[16px] h-[48px] w-${
         w === "full" ? "full" : "[" + w + "]"
-      } text-[#fff] bg-[#3AB2E6] rounded-[8px]`}
+      } text-[#fff] bg-[#2C44EC] rounded-[8px]`}
     >
       {label} {loading && ". . ."}
     </button>
